@@ -5,12 +5,14 @@ import { Loader } from "components/Loader/Loader";
 import AppBar from "components/AppBar";
 
 const SharedLayout = () => {
-    <Container>
-        <AppBar />
-        <Suspense fallback={<Loader/>}>
-            <Outlet />
-        </Suspense>
-    </Container>
+    return (
+        <Container>
+            <AppBar />
+            <Suspense fallback={<Loader />}>
+                <Outlet />
+            </Suspense>
+        </Container>
+)
 }; 
 
 export default SharedLayout; 
