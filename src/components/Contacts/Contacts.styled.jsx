@@ -33,11 +33,10 @@ align-items: start;
  border-radius: 8px;
  background-color: white; 
  margin: 0;
-     @media screen and (max-width: 680px) {
-        display: grid;
-        justify-content: center; 
-
-
+ @media screen and (max-width: 680px) {
+  display: grid;
+  justify-content: center;
+  width: 320px;
   };
 `
 

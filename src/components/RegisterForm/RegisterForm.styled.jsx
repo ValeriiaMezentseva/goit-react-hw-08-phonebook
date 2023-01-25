@@ -97,4 +97,4 @@ transition: background-color .2s ease;
 `; 
 export const CheckboxLabel = styled.span`
     margin-left: 5px; 
-`
+`; 
