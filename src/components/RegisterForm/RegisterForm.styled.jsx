@@ -15,7 +15,7 @@ margin: 0;
 background: #fff;
 border-radius: 8px;
 box-shadow: 0 2px 0 0 #ebeffb;
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 680px) {
    width: 320px;
   }
 `;
@@ -41,7 +41,7 @@ font-size: 25px;
 align-items: center;
 margin: 0;
 width: 480px;
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 680px) {
    width: 320px;
   }
 `;
@@ -65,6 +65,7 @@ line-height: 27px;
 color: #030134;
 margin-top: 10px;
 `; 
+
 export const Button = styled.button`
 border: 1px solid #02bfae;
 text-align: center;
@@ -89,6 +90,10 @@ transition: background-color .2s ease;
   box-shadow: #2c6cbb97 0 -25px 18px -14px inset,#79cfefb3 0 1px 2px;
   transform: scale(1.05);
 }
+  @media screen and (max-width: 680px) {
+  display: flex;
+  flex-direction: column; 
+  } 
 `; 
 export const CheckboxLabel = styled.span`
     margin-left: 5px; 

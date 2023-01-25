@@ -35,12 +35,12 @@ const RegisterForm = () => {
                 <Label>
                     Password
                     <Input type="password" name="password" placeholder='Create a password' required/>
-                </Label>
-            <Input type="checkbox" required/>
+          </Label>
+          <Input type="checkbox" required />
               <CheckboxLabel>
                 Yes, I agree to the terms and conditions by PhoneBook.
               </CheckboxLabel>
-                <Button type="submit">Register</Button>
+            <Button type="submit">Register</Button>
             </Form>
             </Container>
   );
