@@ -78,7 +78,7 @@ margin: 15px;
 font-size: 17px;
 font-weight: 700;
 line-height: 27px;
-background: #41bbd7;
+background: #5cc8bff9; 
 border-radius: 4px;
 box-shadow: rgba(46, 191, 240, 0.4) 2px 2px;
 white-space: nowrap;

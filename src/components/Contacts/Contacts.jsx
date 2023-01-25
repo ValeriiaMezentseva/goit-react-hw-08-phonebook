@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { LoaderSpinner } from 'components/Loader/Loader';
 import { selectContacts, selectFilter, selectOperation } from 'redux/phonebook/selectors';
-import { ItemUser, UserIcon, ContactList, ContactsButton, ContactsTitle, ContactsContainer, ContactLabel, TextSpan } from './Contacts.styled';
+import { ItemUser, UserIcon, ContactList, ContactsButton, ContactsTitle, ContactsContainer, ContactLabel, TextSpan, NameText } from './Contacts.styled';
 
 
 const ContactsList = () => {
@@ -35,10 +35,13 @@ const ContactsList = () => {
 
     return (
         <ContactsContainer>
-            <ContactsTitle> Contacts </ContactsTitle>
+            <ContactsTitle> My contacts </ContactsTitle>
             {filtredContacts.length > 0 ? (
                 <ContactList>
-                    <TextSpan> Name:  Phone number: </TextSpan>
+                    <NameText>
+                    <TextSpan> Name: </TextSpan>
+                        <TextSpan>Phone number: </TextSpan>
+                        </NameText>
                     {filtredContacts.map(({ id, name, number }) => (
                         <ItemUser key={id}>
                             <ContactLabel>   <UserIcon /> {name} </ContactLabel>

@@ -11,14 +11,14 @@ export const UserName = styled.p`
 font-weight: 500;
 font-size: 20px;
 display: flex;
-color: #023f8af8;
+color: #5cc8bf;
 align-items: center;
 `; 
 
 export const Icon = styled(BsPersonBadge)`
 padding: 0;
 font-size: 26px;
-fill: #023f8af8;
+fill: #5cc8bf;
 margin-right: 3px;
 `
 
