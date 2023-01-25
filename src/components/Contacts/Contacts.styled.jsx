@@ -29,14 +29,15 @@ align-items: center;
 export const ContactList = styled.ul` 
 padding: 15px;
 align-items: start;
- width: 100%;
+ min-width: 100%;
  border-radius: 8px;
  background-color: white; 
  margin: 0;
  @media screen and (max-width: 680px) {
   display: grid;
   justify-content: center;
-  width: 320px;
+  margin: 0;
+
   };
 `
 
@@ -57,11 +58,6 @@ width: 46px;
     color: red;
     border-color: red;
   }
-     @media screen and (max-width: 680px) {
-width: 42px; 
-height: 42px; 
-justify-content: space-between;
-  };
 `;
 
 export const ContactsTitle = styled.h2`
@@ -83,7 +79,7 @@ background-image: linear-gradient(-45deg,#d7eef1,rgba(182, 235, 249, 0.989));
   }; 
    @media screen and (max-width: 680px) {
 min-height: 50px;
-width: 320px; 
+width: 340px; 
 align-items: center;
   };
 
