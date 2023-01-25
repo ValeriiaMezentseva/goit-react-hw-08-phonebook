@@ -17,6 +17,7 @@ export const DeleteIcon = styled(TiDeleteOutline)`
  fill: black; 
    font-size: 36px;
   border-radius: 5px;
+  padding: 5px;
   border: 2px solid #5cc8bf8a;
    :hover {
     fill: red;
@@ -54,6 +55,7 @@ text-align: center;
 
 export const ContactsButton = styled.button`
   display: flex;
+  padding: 0;
   align-items: center;
   border: none; 
   justify-content: center;
