@@ -1,11 +1,11 @@
-import { TiDeleteOutline } from 'react-icons/ti';
+
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/phonebook/operations';
 import { useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { LoaderSpinner } from 'components/Loader/Loader';
 import { selectContacts, selectFilter, selectOperation } from 'redux/phonebook/selectors';
-import { ItemUser, UserIcon, ContactList, ContactsButton, ContactsTitle, ContactsContainer, ContactLabel, TextSpan, NameText } from './Contacts.styled';
+import { ItemUser, UserIcon, ContactList, ContactsButton, ContactsTitle, ContactsContainer, ContactLabel, TextSpan, NameText, DeleteIcon } from './Contacts.styled';
 
 
 const ContactsList = () => {
@@ -47,7 +47,7 @@ const ContactsList = () => {
                             <ContactLabel>   <UserIcon /> {name} </ContactLabel>
                             <ContactLabel>{number} </ContactLabel>
                             <ContactsButton onClick={() => removeContact(id)}>
-                                {operation === id ? <LoaderSpinner /> : <TiDeleteOutline />}</ContactsButton>
+                                {operation === id ? <LoaderSpinner /> : <DeleteIcon />}</ContactsButton>
                         </ItemUser>
                     ))}
                 </ContactList>

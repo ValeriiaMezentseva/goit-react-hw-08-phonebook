@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { FaUserCircle } from 'react-icons/fa';
+import { TiDeleteOutline } from 'react-icons/ti';
 
 
 
@@ -10,6 +11,17 @@ border-radius: 50%;
 margin-right: 10px;
 fill: #5cc8bffb;
 font-size: 20px;
+`; 
+
+export const DeleteIcon = styled(TiDeleteOutline)`
+ fill: black; 
+   font-size: 36px;
+  border-radius: 5px;
+  border: 2px solid #5cc8bf8a;
+   :hover {
+    fill: red;
+    border-color: red;
+  }
 `
 
 export const ItemUser = styled.li`
@@ -41,23 +53,13 @@ text-align: center;
 `
 
 export const ContactsButton = styled.button`
-width: 46px;
-  height: 100%;
   display: flex;
   align-items: center;
+  border: none; 
   justify-content: center;
-  color: #242323;
-  font-size: 36px;
-  border-radius: 5px;
-  border: 2px solid #5cc8bf8a;
   background-color: transparent;
   transition: all 100ms linear;
   cursor: pointer;
-  :hover {
-    color: red;
-    border-color: red;
-  }
-
 `;
 
 export const ContactsTitle = styled.h2`
@@ -74,12 +76,11 @@ width: 980px;
 background-image: linear-gradient(-45deg,#a8e1ee,#c6eaec);
 background-image: linear-gradient(-45deg,#d7eef1,rgba(182, 235, 249, 0.989));
 @media screen and (max-width: 1080px) {
-   width: 600px;
    margin: 0;
+   width: 100%;
   }; 
    @media screen and (max-width: 680px) {
 min-height: 50px;
-width: 340px; 
 align-items: center;
   };
 
@@ -91,7 +92,7 @@ display: flex;
 flex-direction: column;
 width: 1000px; 
 margin-top: 30px;
-padding: 10px;
+padding: 15px;
 @media screen and (max-width: 1080px) {
    width: 600px;
   align-items: center;
