@@ -51,7 +51,7 @@ const ContactsList = () => {
                         </ItemUser>
                     ))}
                 </ContactList>
-            ) : (<p > There is no contacts  </p>)}
+            ) : (<p > There is no contacts 🤷 </p>)}
         </ContactsContainer>
     );
 };
