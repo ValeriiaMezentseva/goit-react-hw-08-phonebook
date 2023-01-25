@@ -1,9 +1,9 @@
-import { Formik, Form } from 'formik';
+import { Formik} from 'formik';
 import * as yup from 'yup';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix';
 import { Loader } from 'components/Loader/Loader';
-import { FormWrapper, FormBox, Label, Input, Error, FormButton } from './Form.styled';
+import { FormWrapper, FormBox, Label, Input, Error, FormButton, Title, FormStyled, ButtonBox  } from './Form.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectOpenFilter , selectOperation} from 'redux/phonebook/selectors';
 import { toggleFilterAction } from "redux/phonebook/sliceFilter";
@@ -40,8 +40,14 @@ const ContactsForm = () => {
             return;
         }
         values.id = nanoid(10);
+
+        const newContact = {
+            id: 'id' + nanoid(),
+            name: values.name,
+            number: values.number,
+        };
         try {
-            dispatch(addContact(values));
+            dispatch(addContact(newContact));
             Notify.success(`${values.name} was successfully added to  your contacts`);
             resetForm();
         } catch (error) {
@@ -49,21 +55,23 @@ const ContactsForm = () => {
         };
 
      }
-     return (
+    return (
+        <>
+        <Title>Add a new contact</Title>
          <Formik
              initialValues={initialValues}
              validationSchema={schema}
              onSubmit={handleSubmit}
-         >
-             <FormWrapper>
-                 <Form autoComplete="off">
+            >
+            <FormWrapper>
+                 <FormStyled autoComplete="off">
                      <FormBox>
                 <Label htmlFor='name'>
                      Name
                      <Input
                          id='name'
                          type="text"
-                         name="name"
+                         name='name'
                          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                      />
                      <Error name='name' component='div' />
@@ -73,17 +81,20 @@ const ContactsForm = () => {
                      <Input
                          id='number'
                          type="tel"
-                         name="number"
+                         name='number'
                          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                      />
                      <Error name='number' component='div' /> 
                          </Label>
-                         </FormBox>
-                     <FormButton type="submit"> {operation === 'add' ? <Loader/> : 'Add contact' } </FormButton> 
-                     <FormButton type="button" onClick={toggle} isOpen={isOpenFilter}>{isOpenFilter ? 'Close filter' : 'Search'}</FormButton>
-                 </Form>
+                    </FormBox>
+                    <ButtonBox>
+                        <FormButton type="submit"> {operation === 'add' ? <Loader /> : 'Add contact'} </FormButton> 
+                        <FormButton type="button" onClick={toggle} isOpen={isOpenFilter}>{isOpenFilter ? 'Close filter' : 'Search'}</FormButton>
+                    </ButtonBox>
+                 </FormStyled>
                  </FormWrapper>
-             </Formik>
+            </Formik>
+            </>
      )
 
        

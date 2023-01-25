@@ -1,5 +1,11 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+Notify.init({
+  position: 'center-top',
+});
+
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/'; 
 
@@ -19,9 +25,11 @@ export const register = createAsyncThunk(
         try {
             const response = await axios.post('/users/signup', credentials);
             setAuthHeader(response.data.token); 
+             Notify.success('Registered successfully');
             return response.data;
         }
         catch (e) {
+             Notify.failure("Something went wrong, try again");
             return thunkAPI.rejectWithValue(e.message);
         }
     }
@@ -33,8 +41,10 @@ export const logIn = createAsyncThunk(
         try {
             const response = await axios.post('/users/login', credentials);
             setAuthHeader(response.data.token);
+            Notify.success(`Welcome back, ${response.data.user.name}`);
             return response.data;
         } catch (e) {
+            Notify.failure('Your email or password is incorrect. Try again.');
             return thunkAPI.rejectWithValue(e.message);
         }
     }

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { LoaderSpinner } from 'components/Loader/Loader';
 import { selectContacts, selectFilter, selectOperation } from 'redux/phonebook/selectors';
-import { ItemUser, UserIcon, ContactList, ContactsButton, ContactsTitle, ContactsContainer } from './Contacts.styled';
+import { ItemUser, UserIcon, ContactList, ContactsButton, ContactsTitle, ContactsContainer, ContactLabel, TextSpan } from './Contacts.styled';
 
 
 const ContactsList = () => {
@@ -18,7 +18,7 @@ const ContactsList = () => {
     const removeContact = id => {
         try {
             dispatch(deleteContact(id));
-            Notify.success(`Contact was successfully removed from your contacts`);
+            Notify.success(`Contact was successfully removed from your phonebook`);
         } catch (error) {
             Notify.error(`Something went wrong`);
     }
@@ -38,15 +38,17 @@ const ContactsList = () => {
             <ContactsTitle> Contacts </ContactsTitle>
             {filtredContacts.length > 0 ? (
                 <ContactList>
-                    {filtredContacts.map(({ id, name, phone }) => (
+                    <TextSpan> Name:  Phone number: </TextSpan>
+                    {filtredContacts.map(({ id, name, number }) => (
                         <ItemUser key={id}>
-                            <UserIcon /> {name}: {phone}
+                            <ContactLabel>   <UserIcon /> {name} </ContactLabel>
+                            <ContactLabel>{number} </ContactLabel>
                             <ContactsButton onClick={() => removeContact(id)}>
-                                { operation === id ? <LoaderSpinner /> : <TiDeleteOutline />}</ContactsButton>
+                                {operation === id ? <LoaderSpinner /> : <TiDeleteOutline />}</ContactsButton>
                         </ItemUser>
                     ))}
                 </ContactList>
-            ) : (<p>There is no contacts</p>)}
+            ) : (<p > There is no contacts  </p>)}
         </ContactsContainer>
     );
 };

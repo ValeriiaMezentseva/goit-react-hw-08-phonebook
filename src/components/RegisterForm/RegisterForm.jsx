@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operationsAuth';
-import { Form, Label } from './RegisterForm.styled';
+import { Form, Label, Container, Title, InfoRegister, Input, Button, CheckboxLabel } from './RegisterForm.styled';
+
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
-
-  const handleSubmit = e => {
+  
+    const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     dispatch(
@@ -18,22 +19,30 @@ const RegisterForm = () => {
     form.reset();
   };
 
-  return (
-    <Form onSubmit={handleSubmit} autoComplete="off">
-      <Label>
-        Username
-        <input type="text" name="name" />
-      </Label>
-      <Label>
-        Email
-        <input type="email" name="email" />
-      </Label>
-      <Label>
-        Password
-        <input type="password" name="password" />
-      </Label>
-      <button type="submit">Register</button>
-    </Form>
+    return (
+        <Container>
+             <Title>Your PhoneBook details</Title>
+            <Form onSubmit={handleSubmit} autoComplete="off">
+                <InfoRegister>Create your own personal PhoneBook account by completing the form below 👇</InfoRegister>
+                <Label>
+                    Username
+                    <Input type="text" name="name" placeholder='What is your name?'required/>
+                </Label>
+                <Label>
+                    Email
+                    <Input type="email" name="email" placeholder='What is your email address?' required/>
+                </Label>
+                <Label>
+                    Password
+                    <Input type="password" name="password" placeholder='Create a password' required/>
+                </Label>
+            <Input type="checkbox" required/>
+              <CheckboxLabel>
+                Yes, I agree to the terms and conditions by PhoneBook.
+              </CheckboxLabel>
+                <Button type="submit">Register</Button>
+            </Form>
+            </Container>
   );
 };
 
