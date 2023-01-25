@@ -116,8 +116,6 @@ background-image: linear-gradient(-45deg,#d7eef1,rgba(182, 235, 249, 0.989));
   }; 
 
  @media screen and (max-width: 680px) {
-background-image: linear-gradient(-45deg,#41bbd7,#30ccd4);
-background-image: linear-gradient(-45deg,#41bbd7,rgba(46, 191, 240, 0.4));
 min-height: 50px;
 width: 320px; 
 align-items: center;

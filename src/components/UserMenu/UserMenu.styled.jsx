@@ -5,6 +5,10 @@ export const Wrapper = styled.div`
 display: flex;
 align-items: center;
 gap: 12px;
+ @media screen and (max-width: 680px) {
+flex-direction: column; 
+gap: 0px; 
+  };
 `; 
 
 export const UserName = styled.p`
@@ -13,6 +17,11 @@ font-size: 20px;
 display: flex;
 color: #5cc8bf;
 align-items: center;
+ @media screen and (max-width: 680px) {
+margin-top: 5px;
+margin-bottom: 10px; 
+margin-right: 5px;
+  };
 `; 
 
 export const Icon = styled(BsPersonBadge)`
@@ -46,4 +55,10 @@ transition: background-color .2s ease;
   box-shadow: #2c6cbb97 0 -25px 18px -14px inset,#79cfefb3 0 1px 2px;
   transform: scale(1.05);
 }
+ @media screen and (max-width: 680px) {
+margin: 0;
+margin-right: 5px;
+margin-bottom: 3px;
+padding: 6px 20px;
+  };
 `; 

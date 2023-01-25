@@ -8,10 +8,11 @@ const Navigation = () => {
   return (
       < NavWrapper>
           <LogoWrapper>
-              <Img src={image} alt="phonebook" />
-          <Link to="/">
+        <Img src={image} alt="phonebook" />
+        {!isLoggedIn &&  ( <Link to="/">
         PhoneBook
-              </Link>
+              </Link>)}
+         
               </LogoWrapper>
       {isLoggedIn && (
         <Link to="/contacts">

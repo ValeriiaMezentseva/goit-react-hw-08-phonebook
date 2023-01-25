@@ -1,12 +1,12 @@
-import { Link, Button } from "./AuthNav.styled";
+import { Link, Button, BtnContainer } from "./AuthNav.styled";
 
 
 const AuthNav = () => {
     return (
-        <div>
+        <BtnContainer>
             <Button> <Link to="/register"> Register </Link></Button>
             <Button> <Link to="/login"> Log in </Link></Button>
-        </div>
+        </BtnContainer>
     );
 };
 
