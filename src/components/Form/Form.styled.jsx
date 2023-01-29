@@ -23,11 +23,14 @@ width: 99%;
 background-color: #fefefe;
 box-shadow: 0px 8px 12px -4px rgba(50, 88, 130, 0.32);
 border-radius: 15px;
-@media screen and (min-width: 768px) {
+    @media screen and (min-width: 320px) {
+    width: 320px;
+  }
+  @media screen and (min-width: 480px) {
     width: 480px;
-  };
+  }
+`;
 
-`
 export const FormBox = styled.div`
  display: flex; 
  flex-direction: column;
