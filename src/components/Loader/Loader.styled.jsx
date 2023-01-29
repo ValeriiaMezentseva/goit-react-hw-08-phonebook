@@ -18,5 +18,4 @@ export const ThreeDotsBtn = styled(ThreeDots)`
 export const SpinnerBtn = styled(FiLoader)`
     width: 40px;
     height: 25px;
-    text-align: center;
 `

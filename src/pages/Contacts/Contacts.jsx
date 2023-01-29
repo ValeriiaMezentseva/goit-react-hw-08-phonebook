@@ -43,8 +43,8 @@ const ContactsPage = () => {
               <FormButton type='button'onClick={toggleForm} isOpen={isOpenForm}>{isOpenForm ? 'Close' : 'Add new contact'}</FormButton>
               </BtnWrapper>
             {isOpenFilter && (<Filter />)}
-            {isOpenForm && ( <ContactsForm />)}
-          {operation === 'fetch' && !error  ? <Loader /> : <ContactsList />}
+          {isOpenForm && (<ContactsForm />)}
+            {operation === 'fetch' && !error ? <Loader /> : <ContactsList />}
             {error && <div> Something went wrong! Please try again! </div>}
             </ContactsWrapper>
           </ContactsContainer>

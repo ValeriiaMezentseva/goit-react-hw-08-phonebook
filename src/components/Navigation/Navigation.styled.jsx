@@ -20,7 +20,7 @@ export const Link = styled(NavLink)`
   }
   &.active {
     color: #fefefe;
-    background-color: #7ddbecf8;
+    background-color:#5cc8bf8a;
   }
 /* display: inline-block;
 text-decoration: none;
@@ -47,7 +47,7 @@ display: none;
 export const NavWrapper = styled.nav`
   display: flex;
   align-items: center;
-  gap: 8px;
+  /* gap: 8px; */
 `;
 
 

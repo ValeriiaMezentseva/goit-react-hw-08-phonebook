@@ -75,7 +75,7 @@ export const FormButton = styled.button`
 border: 1px solid #02bfae;
 text-align: center;
 padding: 10px 20px;
-margin-left: 5px;
+margin-left: 10px;
 font-size: 17px;
 font-weight: 700;
 line-height: 27px;
@@ -93,7 +93,11 @@ transition: background-color .2s ease;
   box-shadow: #2c6cbb97 0 -25px 18px -14px inset,#79cfefb3 0 1px 2px;
   transform: scale(1.05);
 }
-:not(:last-child) {
-    margin-right: 10px;
-  }
+  
+@media screen and (max-width: 479px) {
+  font-size: 14px;
+  padding: 5px 10px;
+  };
 `;
+
+

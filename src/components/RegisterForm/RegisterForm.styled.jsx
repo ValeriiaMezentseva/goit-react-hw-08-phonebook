@@ -15,8 +15,15 @@ margin: 0;
 background: #fff;
 border-radius: 8px;
 box-shadow: 0 2px 0 0 #ebeffb;
-@media screen and (max-width: 680px) {
-   width: 320px;
+@media screen and (max-width: 767px) {
+   width: 480px;
+  }
+
+  @media screen and (max-width: 479px) {
+   width: 300px;
+  }
+    @media screen and (max-width: 319px) {
+   width: 220px;
   }
 `;
 
@@ -41,8 +48,14 @@ font-size: 25px;
 align-items: center;
 margin: 0;
 width: 480px;
-@media screen and (max-width: 680px) {
-   width: 320px;
+@media screen and (max-width: 767px) {
+   width: 480px;
+  }
+    @media screen and (max-width: 479px) {
+   width: 300px;
+  }
+  @media screen and (max-width: 319px) {
+   width: 220px;
   }
 `;
 

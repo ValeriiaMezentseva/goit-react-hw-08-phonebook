@@ -25,6 +25,9 @@ width: 420px;
 @media screen and (max-width: 768px) {
    width: 320px;
   }
+  @media screen and (max-width: 320px) {
+   width: 240px;
+  }
 `;
 
 export const Form = styled.form`
@@ -36,6 +39,9 @@ border-radius: 8px;
 box-shadow: 0 2px 0 0 #ebeffb;
 @media screen and (max-width: 768px) {
    width: 320px;
+  }
+    @media screen and (max-width: 320px) {
+   width: 240px;
   }
 `;
 

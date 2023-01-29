@@ -5,17 +5,18 @@ import Modal from 'components/Modal';
 import { useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { LoaderSpinner } from 'components/Loader/Loader';
-import { selectContacts, selectFilter, selectOperation, selectModal } from 'redux/phonebook/selectors';
-import { ItemUser, UserIcon, ContactList, ContactsButton, ContactLabel, DeleteIcon, PhoneIcon, EditIcon, ContactWrapper, ButtonWrapper } from './Contacts.styled';
+import { selectOperation, selectModal, selectFilteredContacts } from 'redux/phonebook/selectors';
+import { ItemUser, UserIcon, ContactList, ContactsButton, ContactLabel, DeleteIcon, PhoneIcon, EditIcon, ContactWrapper, ButtonWrapper, EmptyText } from './Contacts.styled';
 
 
 const ContactsList = () => {
     const dispatch = useDispatch();
     
-    const contacts = useSelector(selectContacts);
-    const filter = useSelector(selectFilter);
+    // const contacts = useSelector(selectContacts);
+    // const filter = useSelector(selectFilter);
     const operation = useSelector(selectOperation); 
     const modal = useSelector(selectModal); 
+    const filtredContacts = useSelector(selectFilteredContacts);
 
     const editContact = id => {
         dispatch(setModal(id)); 
@@ -31,13 +32,13 @@ const ContactsList = () => {
         }
     };
 
- const getFilteredContacts = () => {
-    const normilizedFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normilizedFilter)
-    );
-  };
-    const filtredContacts = getFilteredContacts();
+//  const getFilteredContacts = () => {
+//     const normilizedFilter = filter.toLowerCase();
+//     return contacts.filter(contact =>
+//       contact.name.toLowerCase().includes(normilizedFilter)
+//     );
+//   };
+    // const filtredContacts = getFilteredContacts();
     
 
     return (
@@ -67,7 +68,7 @@ const ContactsList = () => {
                         </ItemUser>
                     ))}
                 </ContactList>
-            ) : (<p > There is no contacts 🤷 </p>)}
+            ) : (<EmptyText > There is no contacts 🤷 </EmptyText>)}
             {modal && <Modal />}
             </>
     );

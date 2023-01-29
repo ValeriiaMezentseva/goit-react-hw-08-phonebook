@@ -15,7 +15,7 @@ export const UserName = styled.p`
 font-size: 20px;
 display: flex;
 margin: 0;
-color: #5cc8bf;
+color: #013370ec;
 align-items: center;
  @media screen and (max-width: 680px) {
 margin-top: 5px;
@@ -27,14 +27,14 @@ margin-right: 5px;
 export const Icon = styled(BsPersonBadge)`
 padding: 0;
 font-size: 26px;
-fill: #5cc8bf;
+fill: #41bbd7;
 margin-right: 3px;
 `
 
 export const Button = styled.button`
 border: 1px solid #02bfae;
 text-align: center;
-margin-top: 15px;
+margin-top: 10px;
 padding: 10px 20px;
 margin-right: 10px; 
 font-size: 17px;
@@ -58,7 +58,7 @@ transition: background-color .2s ease;
  @media screen and (max-width: 680px) {
 margin: 0;
 margin-right: 5px;
-margin-bottom: 3px;
+margin-bottom: 5px;
 padding: 6px 20px;
   };
 `; 

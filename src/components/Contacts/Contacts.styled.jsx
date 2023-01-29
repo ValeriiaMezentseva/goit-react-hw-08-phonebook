@@ -75,7 +75,7 @@ cursor: pointer;
 transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 &:hover,
 &:focus {
-  border-color: #010101;
+  border-color:#5cc8bf8a;
   }
 `;
 
@@ -104,3 +104,8 @@ export const ContactsButton = styled.button`
   transition: all 100ms linear;
   cursor: pointer;
 `;
+
+export const EmptyText = styled.div `
+padding: 10px;
+text-align: center;
+`
