@@ -4,3 +4,6 @@ export const selectError = state => state.contacts.error;
 export const selectFilter = state => state.filter.value; 
 export const selectOpenFilter = state => state.filter.isOpen; 
 export const selectOperation = state => state.contacts.operation; 
+export const selectModal = state => state.modal.isModalOpen; 
+export const selectId = state => state.modal.id; 
+export const selectOpenForm = state => state.form.isOpen;

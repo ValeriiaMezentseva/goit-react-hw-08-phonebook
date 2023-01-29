@@ -29,18 +29,19 @@ text-overflow: ellipsis;
 transition: background-color .2s ease;
  outline: none;
  cursor: pointer;
-    margin-bottom: 10px;
 :hover {
   box-shadow: #2c6cbb97 0 -25px 18px -14px inset,#79cfefb3 0 1px 2px;
   transform: scale(1.05);
 }
   @media screen and (max-width: 680px) {
      padding: 6px 20px;
+     margin-bottom: 5px;
   };
 `; 
 
 export const BtnContainer = styled.div`
   display: flex;
+  padding: 5px;
     @media screen and (max-width: 680px) {
      flex-direction: column;
   };

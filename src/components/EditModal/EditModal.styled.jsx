@@ -1,18 +1,6 @@
 import styled from "@emotion/styled";
 import { Field, ErrorMessage, Form } from 'formik';
 
-
-export const FormWrapper = styled.div`
-display: flex;
-flex-direction: row;
-text-align: center;
-padding: 12px;
-margin: 0;
-background: #fff;
-border-radius: 8px;
-box-shadow: 0 2px 0 0 #ebeffb; 
-`;
-
 export const FormStyled = styled(Form)`
 display: flex;
 flex-direction: column;
@@ -24,20 +12,20 @@ background-color: #fefefe;
 box-shadow: 0px 8px 12px -4px rgba(50, 88, 130, 0.32);
 border-radius: 15px;
 @media screen and (min-width: 768px) {
-    width: 480px;
+    width: 510px;
   };
+`; 
 
-`
 export const FormBox = styled.div`
- display: flex; 
- flex-direction: column;
- margin-left: 10px;
- text-align: start;
- @media screen and (max-width: 768px) {
+display: flex; 
+flex-direction: row;
+margin-left: 10px;
+text-align: start;
+ @media screen and (min-width: 768px) {
+   flex-direction: column;
    align-items: center;
   }; 
-`;
-
+`; 
 
 export const Label = styled.label`
  display: flex;
@@ -48,6 +36,7 @@ export const Label = styled.label`
     margin-bottom: 20px;
   }
 `;
+
 export const Input = styled(Field)`
 font-size: 20px;
 padding: 5px 10px;
@@ -58,16 +47,16 @@ border-radius: 5px;
 outline: none;
 :focus {
     border-color: #4287f5;
-  }
+  }   
 `;
 
 export const Error = styled(ErrorMessage)`
-  margin-top: 5px;
-  font-size: 14px;
-  color: red;
-`;
+margin-top: 5px;
+font-size: 14px;
+color: red;
+`; 
 
-export const FormButton = styled.button`
+export const Button = styled.button`
 border: 1px solid #02bfae;
 text-align: center;
 padding: 10px 20px;
@@ -91,12 +80,6 @@ transition: background-color .2s ease;
 }
 :not(:last-child) {
     margin-right: 10px;
-  }
-`;
+  } 
+`; 
 
-
-export const ButtonBox = styled.div`
-display: flex;
-justify-content: center;
-height: 80px;
-`

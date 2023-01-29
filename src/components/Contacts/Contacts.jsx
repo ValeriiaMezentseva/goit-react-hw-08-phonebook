@@ -1,11 +1,12 @@
-
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/phonebook/operations';
+import { setModal } from 'redux/phonebook/sliceModal';
+import Modal from 'components/Modal';
 import { useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { LoaderSpinner } from 'components/Loader/Loader';
-import { selectContacts, selectFilter, selectOperation } from 'redux/phonebook/selectors';
-import { ItemUser, UserIcon, ContactList, ContactsButton, ContactsTitle, ContactsContainer, ContactLabel, TextSpan, NameText, DeleteIcon } from './Contacts.styled';
+import { selectContacts, selectFilter, selectOperation, selectModal } from 'redux/phonebook/selectors';
+import { ItemUser, UserIcon, ContactList, ContactsButton, ContactLabel, DeleteIcon, PhoneIcon, EditIcon, ContactWrapper, ButtonWrapper } from './Contacts.styled';
 
 
 const ContactsList = () => {
@@ -14,6 +15,12 @@ const ContactsList = () => {
     const contacts = useSelector(selectContacts);
     const filter = useSelector(selectFilter);
     const operation = useSelector(selectOperation); 
+    const modal = useSelector(selectModal); 
+
+    const editContact = id => {
+        dispatch(setModal(id)); 
+    }
+
     
     const removeContact = id => {
         try {
@@ -21,9 +28,9 @@ const ContactsList = () => {
             Notify.success(`Contact was successfully removed from your phonebook`);
         } catch (error) {
             Notify.error(`Something went wrong`);
-    }
+        }
     };
-    
+
  const getFilteredContacts = () => {
     const normilizedFilter = filter.toLowerCase();
     return contacts.filter(contact =>
@@ -34,25 +41,35 @@ const ContactsList = () => {
     
 
     return (
-        <ContactsContainer>
-            <ContactsTitle> My contacts </ContactsTitle>
+        <>
             {filtredContacts.length > 0 ? (
                 <ContactList>
-                    <NameText>
-                    <TextSpan> Name: </TextSpan>
-                        <TextSpan>Phone number: </TextSpan>
-                        </NameText>
                     {filtredContacts.map(({ id, name, number }) => (
                         <ItemUser key={id}>
-                            <ContactLabel>   <UserIcon /> {name} </ContactLabel>
-                            <ContactLabel>{number} </ContactLabel>
-                            <ContactsButton onClick={() => removeContact(id)}>
-                                {operation === id ? <LoaderSpinner /> : <DeleteIcon />}</ContactsButton>
+                            <ContactWrapper>
+                                <ContactLabel>
+                                    <UserIcon />
+                                    <span>{name}</span>
+                                </ContactLabel>
+                                <ContactLabel>
+                                    <PhoneIcon />
+                                    <span>{number}</span>
+                                </ContactLabel>
+                            </ContactWrapper>
+                            <ButtonWrapper>
+                                <ContactsButton type='button' onClick={() => editContact(id)}>
+                                    <EditIcon />
+                                </ContactsButton>
+                                <ContactsButton type='button' onClick={() => removeContact(id)}>
+                                    {operation === id ? <LoaderSpinner /> : <DeleteIcon />}
+                                </ContactsButton>
+                            </ButtonWrapper>
                         </ItemUser>
                     ))}
                 </ContactList>
             ) : (<p > There is no contacts 🤷 </p>)}
-        </ContactsContainer>
+            {modal && <Modal />}
+            </>
     );
 };
 

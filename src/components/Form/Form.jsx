@@ -3,10 +3,10 @@ import * as yup from 'yup';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix';
 import { Loader } from 'components/Loader/Loader';
-import { FormWrapper, FormBox, Label, Input, Error, FormButton, Title, FormStyled, ButtonBox  } from './Form.styled';
+import {  FormWrapper, FormBox, Label, Input, Error, FormButton, FormStyled, ButtonBox  } from './Form.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectOpenFilter , selectOperation} from 'redux/phonebook/selectors';
-import { toggleFilterAction } from "redux/phonebook/sliceFilter";
+import { selectContacts, selectOperation} from 'redux/phonebook/selectors';
+// import { toggleFilterAction } from "redux/phonebook/sliceFilter";
 import { addContact } from 'redux/phonebook/operations';
 
 const namePattern = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
@@ -28,11 +28,11 @@ const ContactsForm = () => {
 
     const contacts = useSelector(selectContacts); 
     const operation = useSelector(selectOperation);
-    const isOpenFilter = useSelector(selectOpenFilter);
+    // const isOpenFilter = useSelector(selectOpenFilter);
     const dispatch = useDispatch();  
-    const toggle = () => {
-    dispatch(toggleFilterAction());
-  }
+//     const toggle = () => {
+//     dispatch(toggleFilterAction());
+//   }
     const handleSubmit = (values, { resetForm }) => {  
         const isIncluded = contacts.some(contact => contact.name.toLowerCase() === values.name.toLowerCase());
         if (isIncluded) {
@@ -56,8 +56,6 @@ const ContactsForm = () => {
 
      }
     return (
-        <>
-        <Title>Add a new contact</Title>
          <Formik
              initialValues={initialValues}
              validationSchema={schema}
@@ -89,12 +87,10 @@ const ContactsForm = () => {
                     </FormBox>
                     <ButtonBox>
                         <FormButton type="submit"> {operation === 'add' ? <Loader /> : 'Add contact'} </FormButton> 
-                        <FormButton type="button" onClick={toggle} isOpen={isOpenFilter}>{isOpenFilter ? 'Close filter' : 'Search'}</FormButton>
                     </ButtonBox>
                  </FormStyled>
                  </FormWrapper>
             </Formik>
-            </>
      )
 
        

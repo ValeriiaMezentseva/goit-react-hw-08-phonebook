@@ -11,7 +11,6 @@ align-items: center;
 
 export const FilterWrapper = styled.div`
   text-align: start;
-  margin-top: 20px;
 background: #fff;
 border-radius: 8px;
 box-shadow: 0 2px 0 0 #ebeffb; 
@@ -24,32 +23,6 @@ align-items: center;
 width: 320px; 
   };
 `
-
-export const Title = styled.h2`
-padding: 10px;
-display: flex;
-align-items: flex-start;
-flex-direction: column;
-justify-content: center;
-color: #013370ec;
-font-size: 20px;
-margin: 0;
-min-height: 30px;
-border-radius: 8px 8px 0 0;
-width: 1000px;
-background-image: linear-gradient(-45deg,#a8e1ee,#c6eaec);
-background-image: linear-gradient(-45deg,#d7eef1,rgba(182, 235, 249, 0.989));
-@media screen and (max-width: 1080px) {
-   width: 600px;
-   margin: 0;
-  }; 
-
- @media screen and (max-width: 680px) {
-min-height: 50px;
-width: 320px; 
-align-items: center;
-  };
-`;
 
 export const Input = styled.input`
 font-size: 20px;

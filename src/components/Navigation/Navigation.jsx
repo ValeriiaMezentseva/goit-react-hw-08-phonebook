@@ -1,4 +1,4 @@
-import { Link,  NavWrapper, Img, LogoWrapper } from './Navigation.styled';
+import { Link,  NavWrapper, Img, LogoWrapper, Span } from './Navigation.styled';
 import { useAuth } from 'hooks/useAuth';
 import image from '../../pictures/logo.png'
 
@@ -8,15 +8,17 @@ const Navigation = () => {
   return (
       < NavWrapper>
           <LogoWrapper>
-        <Img src={image} alt="phonebook" />
-        {!isLoggedIn &&  ( <Link to="/">
-        PhoneBook
+        {!isLoggedIn && (<Link to="/">
+            <Img src={image} alt="phonebook" />
+          <Span>PhoneBook</Span>
               </Link>)}
          
               </LogoWrapper>
       {isLoggedIn && (
         <Link to="/contacts">
-          Contacts
+          <Img src={image} alt="phonebook" />
+          <Span> Contacts </Span>
+
         </Link>
       )}
     </ NavWrapper>

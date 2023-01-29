@@ -13,6 +13,8 @@ import storage from 'redux-persist/lib/storage';
 import { contactsReducer } from './phonebook/sliceContacts';
 import { filterReducer } from './phonebook/sliceFilter';
 import { authReducer } from './auth/sliceAuth';
+import { modalReducer } from './phonebook/sliceModal';
+import { formReducer } from './phonebook/sliceForm';
 
 const authPersistConfig = {
   key: 'auth',
@@ -22,9 +24,12 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-        auth: persistReducer(authPersistConfig, authReducer),
-        contacts: contactsReducer,
-        filter: filterReducer, 
+    auth: persistReducer(authPersistConfig, authReducer),
+    contacts: contactsReducer,
+    filter: filterReducer,
+    modal: modalReducer,
+    form: formReducer
+        
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

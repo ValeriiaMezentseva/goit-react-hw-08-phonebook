@@ -2,35 +2,53 @@ import ContactsForm from "components/Form/Form";
 import ContactsList from "components/Contacts/Contacts";
 import Filter from "components/Filter";
 import { Loader } from "components/Loader/Loader";
-import { Container, Title } from "./Contacts.styled";
+import { Section, ContactsContainer, ContactsTitle, ContactsWrapper, BtnWrapper, FormButton } from "./Contacts.styled";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchContacts } from "redux/phonebook/operations";
+import { fetchContacts} from "redux/phonebook/operations";
 import { useEffect } from "react";
-import { selectOpenFilter, selectError, selectOperation} from 'redux/phonebook/selectors';
-import { Helmet } from "react-helmet";
+import { toggleFilterAction } from "redux/phonebook/sliceFilter";
+import { selectOpenFilter, selectError, selectOperation, selectModal, selectOpenForm} from 'redux/phonebook/selectors';
+import { toggleFormAction } from "redux/phonebook/sliceForm";
 
 
 const ContactsPage = () => {
-    const isOpenFilter = useSelector(selectOpenFilter);
-    const error = useSelector(selectError);
-    const operation = useSelector(selectOperation);
-    const dispatch = useDispatch(); 
+  const isOpenFilter = useSelector(selectOpenFilter);
+  const error = useSelector(selectError);
+  const operation = useSelector(selectOperation);
+  const modal = useSelector(selectModal);
+  const isOpenForm = useSelector(selectOpenForm);
+  const dispatch = useDispatch(); 
+     const toggle = () => {
+    dispatch(toggleFilterAction());
+     }
 
-      useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  const toggleForm = () => {
+    dispatch(toggleFormAction());
+  }
+
+  useEffect(() => {
+    if (!modal) {
+       dispatch(fetchContacts());
+    }
+  }, [dispatch, modal]);
 
 
-    return (
-        <Container>
-           <Helmet>
-        <Title> My Contacts </Title>
-            </Helmet>
-            <ContactsForm />
+  return (
+      <Section>
+        <ContactsContainer>
+          <ContactsWrapper>
+            <ContactsTitle>My contacts list</ContactsTitle>
+            <BtnWrapper>
+            <FormButton type="button" onClick={toggle} isOpen={isOpenFilter}>{isOpenFilter ? 'Close' : 'Search'}</FormButton>
+              <FormButton type='button'onClick={toggleForm} isOpen={isOpenForm}>{isOpenForm ? 'Close' : 'Add new contact'}</FormButton>
+              </BtnWrapper>
             {isOpenFilter && (<Filter />)}
-            {operation === 'fetch' && !error ? <Loader /> : <ContactsList />}
+            {isOpenForm && ( <ContactsForm />)}
+          {operation === 'fetch' && !error  ? <Loader /> : <ContactsList />}
             {error && <div> Something went wrong! Please try again! </div>}
-        </Container>
+            </ContactsWrapper>
+          </ContactsContainer>
+        </Section>
 
     )
 };

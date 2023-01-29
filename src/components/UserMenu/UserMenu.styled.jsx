@@ -12,9 +12,9 @@ gap: 0px;
 `; 
 
 export const UserName = styled.p`
-font-weight: 500;
 font-size: 20px;
 display: flex;
+margin: 0;
 color: #5cc8bf;
 align-items: center;
  @media screen and (max-width: 680px) {

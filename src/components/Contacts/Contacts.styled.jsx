@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { FaUserCircle } from 'react-icons/fa';
 import { TiDeleteOutline } from 'react-icons/ti';
+import { AiOutlinePhone } from 'react-icons/ai';
+import { MdModeEditOutline } from 'react-icons/md'; 
 
 
 
@@ -9,52 +11,91 @@ padding: 3px;
 border: 1px solid black;
 border-radius: 50%;
 margin-right: 10px;
-fill: #5cc8bffb;
+fill: black; 
 font-size: 20px;
 `; 
+export const PhoneIcon = styled(AiOutlinePhone)`
+padding: 3px;
+border: 1px solid black;
+border-radius: 50%;
+margin-right: 10px;
+fill: black; 
+font-size: 20px;
+`;
+
+export const EditIcon = styled(MdModeEditOutline)`
+fill: black; 
+font-size: 24px;
+border-radius: 5px;
+padding: 5px;
+border: 2px solid #5cc8bf8a;
+:hover {
+  fill: green;
+  border-color: green;
+  }
+`
 
 export const DeleteIcon = styled(TiDeleteOutline)`
- fill: black; 
-   font-size: 36px;
-  border-radius: 5px;
-  padding: 5px;
-  border: 2px solid #5cc8bf8a;
-   :hover {
-    fill: red;
-    border-color: red;
+fill: black; 
+font-size: 24px;
+border-radius: 5px;
+padding: 5px;
+border: 2px solid #5cc8bf8a;
+:hover {
+  fill: red;
+  border-color: red;
   }
+`; 
+
+export const ButtonWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 5px;
 `
 
-export const ItemUser = styled.li`
-display: flex;
-justify-content: space-between;
-width: 100%; 
-align-items: center;
-:not(:last-child) {
-    margin-bottom: 20px;
-    }
-    :hover {
-    color: #4287f5; 
-    border-color: #4287f5;
-  }
-`
 
 export const ContactList = styled.ul` 
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 5px;
+  margin: 5px;
+`;
+
+export const ItemUser = styled.li` 
 display: flex;
-flex-direction: column; 
-padding: 10px;
-align-items: start;
- border-radius: 8px;
- background-color: white; 
- margin: 0;
- @media screen and (max-width: 680px) {
+justify-content: space-between;
 align-items: center;
-text-align: center;
-  };
+padding: 10px;
+font-size: 24px;
+border: 1px solid rgb(200, 200, 200);
+border-radius: 10px;
+cursor: pointer;
+transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+&:hover,
+&:focus {
+  border-color: #010101;
+  }
+`;
+
+export const ContactWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 12px;
+@media screen and (max-width: 479px) {
+  font-size: 20px;
+  }
 `
 
+export const ContactLabel = styled.div`
+display: flex;
+align-items: center;
+gap: 12px;
+`; 
+
 export const ContactsButton = styled.button`
-  display: flex;
   padding: 0;
   align-items: center;
   border: none; 
@@ -63,83 +104,3 @@ export const ContactsButton = styled.button`
   transition: all 100ms linear;
   cursor: pointer;
 `;
-
-export const ContactsTitle = styled.h2`
- padding: 10px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-color: #013370ec;
-font-size: 20px;
-margin: 0;
-min-height: 30px;
-border-radius: 8px 8px 0 0;
-width: 980px;
-background-image: linear-gradient(-45deg,#a8e1ee,#c6eaec);
-background-image: linear-gradient(-45deg,#d7eef1,rgba(182, 235, 249, 0.989));
-@media screen and (max-width: 1080px) {
-   margin: 0;
-   width: 100%;
-  }; 
-   @media screen and (max-width: 680px) {
-min-height: 50px;
-align-items: center;
-  };
-
-`;
-
-
-export const ContactsContainer = styled.div`
-display: flex;
-flex-direction: column;
-width: 1000px; 
-margin-top: 30px;
-padding: 15px;
-@media screen and (max-width: 1080px) {
-   width: 600px;
-  align-items: center;
-  }; 
-@media screen and (max-width: 680px) {
-   max-width: 340px;
-   align-items: center;
-  }; 
-`;
-
-export const ContactLabel = styled.div`
-  display: flex;
-  padding: 10px;
-  width: 100%; 
-    text-align: start; 
-  justify-content: flex-start;
-  align-items: center;
-   border-radius: 5px;
-    border: 2px solid #5cc8bf8a;;
-    height: 30px;
-    margin-right: 10px;
-`; 
-
-export const NameText = styled.div`
-  display: flex;
-  padding: 16px;
-  width: 950px;
-  margin: 0;
-  justify-content: space-around;
-   align-items: flex-start; 
-   border-radius: 10px;
-   margin-bottom: 5px;
-   background-color: #5cc8bf8a; 
-   @media screen and (max-width: 1080px) {
-   width: 570px;
-  align-items: center;
-  }; 
-@media screen and (max-width: 680px) {
-   max-width: 310px;
-   align-items: center;
-  }; 
-`
-
-export const TextSpan = styled.span`
-  font-weight: 700;
-  align-items: flex-start;
-
-`
