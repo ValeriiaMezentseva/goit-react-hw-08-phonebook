@@ -20,6 +20,9 @@ export const ContactsContainer = styled.div`
   padding-right: 20px; */
   margin-left: auto;
   margin-right: auto;
+    @media screen and (min-width: 320px) {
+    width: 320px;
+  }
   @media screen and (min-width: 480px) {
     width: 480px;
   }
@@ -39,14 +42,14 @@ justify-content: center;
 color: #013370ec;
 font-size: 20px;
 margin: 0;
-min-height: 30px;
+min-height: 40px;
 border-radius: 8px 8px 0 0;
 background-image: linear-gradient(-45deg,#a8e1ee,#c6eaec);
 background-image: linear-gradient(-45deg,#d7eef1,rgba(182, 235, 249, 0.989));
 @media screen and (max-width: 1080px) {
    margin: 0;
   }; 
-   @media screen and (max-width: 680px) {
+   @media screen and (max-width: 767px) {
 min-height: 50px;
 align-items: center;
   };
