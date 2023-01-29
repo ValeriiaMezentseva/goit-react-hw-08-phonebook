@@ -6,23 +6,31 @@ display: flex;
 flex-direction: column;
 gap: 24px;
 padding: 20px;
-margin: 0 auto;
+margin-right: 0; 
 width: 99%;
 background-color: #fefefe;
 box-shadow: 0px 8px 12px -4px rgba(50, 88, 130, 0.32);
 border-radius: 15px;
 @media screen and (min-width: 768px) {
-    width: 510px;
+    width: 540px;
   };
+  @media screen and (max-width: 767px) {
+    width: 430px;
+  };
+    @media screen and (max-width: 479px) {
+    width: 260px;
+  };
+
+
+
 `; 
 
 export const FormBox = styled.div`
 display: flex; 
-flex-direction: row;
 margin-left: 10px;
+ flex-direction: column;
 text-align: start;
  @media screen and (min-width: 768px) {
-   flex-direction: column;
    align-items: center;
   }; 
 `; 

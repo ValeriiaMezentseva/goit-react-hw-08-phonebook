@@ -2,9 +2,9 @@ import { LoaderBox, ThreeDotsBtn, SpinnerBtn  } from './Loader.styled';
 
 export const Loader = () => {
     return (
-    
+        <LoaderBox>
             <ThreeDotsBtn color='#4287f5'/>
-        
+        </LoaderBox>
     )
 };
 

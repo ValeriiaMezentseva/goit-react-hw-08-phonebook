@@ -21,8 +21,12 @@ border-radius: 10px;
 transform: translate(-50%, -50%) scale(1);
 @media screen and (min-width: 480px) {
     padding: 36px;
+    width: 480px;
 }
 @media screen and (min-width: 768px) {
     width: 582px;
+    }
+@media screen and (max-width: 479px) {
+    width: 300px;
     }
 `; 

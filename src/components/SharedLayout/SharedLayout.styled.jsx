@@ -8,3 +8,10 @@ export const Container = styled.div`
 align-items: center;
 align-content: center;
 `;
+
+export const Box = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+`

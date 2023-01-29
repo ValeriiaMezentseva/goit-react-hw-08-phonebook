@@ -11,11 +11,8 @@ height: 20px;
 `;
 
 export const ThreeDotsBtn = styled(ThreeDots)`
-   display: flex;
-align-items: center;
-justify-content: center;
-width: 80px;
-height: 20px;
+    width: 100%;
+    height: 100%;
 `
 
 export const SpinnerBtn = styled(FiLoader)`
