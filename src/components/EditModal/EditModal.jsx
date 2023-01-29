@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setModal } from "redux/phonebook/sliceModal";
 import { editContact } from "redux/phonebook/operations";
 import { selectContacts, selectId } from "redux/phonebook/selectors";
-import { FormStyled, FormBox, Label, Input, Button , Error} from "./EditModal.styled";
+import { FormStyled, FormBox, Label, Input, Button, Error} from "./EditModal.styled";
 
 
 const namePattern = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
@@ -34,6 +34,12 @@ const EditModal = () => {
     };
 
     const handleSubmit = values => {
+        const isIncluded = contacts.some(contact => contact.name.toLowerCase() === values.name.toLowerCase());
+        if (isIncluded) {
+            Notify.failure(`${values.name} is already in your contacts`)
+            return;
+        }
+
         try {
             dispatch(editContact({ id, contact: values }));
              dispatch(setModal());
@@ -50,8 +56,8 @@ const EditModal = () => {
             validationSchema={schema}
             onSubmit={handleSubmit}
         >
-                <FormStyled autoComplete='off'>
-                    <FormBox>
+            <FormStyled autoComplete='off'>
+                <FormBox>
                         <Label htmlFor='name'>
                             Name
                             <Input

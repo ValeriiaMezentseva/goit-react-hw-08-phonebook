@@ -1,34 +1,22 @@
-import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { setModal } from 'redux/phonebook/sliceModal';
 import EditModal from 'components/EditModal';
-import { Backdrop, ModalContainer } from './Modal.styled';
+import { Backdrop, ModalContainer, CloseButton, CloseIcon } from './Modal.styled';
+
+
 
 const Modal = () => {
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        const onKeydown = e => {
-            if (e.code === 'Escape') {
-                dispatch(setModal());
-            };
-        };
-        window.addEventListener('keydown', onKeydown);
-        return () => {
-            window.removeEventListener('keydown', onKeydown);
-        };
-    }, [dispatch])
-
-    const onBackdropClick = e => {
-        if (e.target === e.currentTarget) {
+    const onBtnClick = () => {
             dispatch(setModal());
-        };
     };
 
     return createPortal(
-        <Backdrop onClick={onBackdropClick}>
+        <Backdrop>
             <ModalContainer>
+                <CloseButton type="button" onClick={onBtnClick}><CloseIcon/></CloseButton>
                 <EditModal />
             </ModalContainer>
         </Backdrop>,
