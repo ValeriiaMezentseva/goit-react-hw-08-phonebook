@@ -58,8 +58,8 @@ export const CloseButton = styled.button`
   background: transparent; 
   border: none; 
   color: #5cc8bff9; 
-  box-sizing: border-box;
- border-radius: 4px;
+  /* box-sizing: border-box; */
+ /* border-radius: 4px; */
  @media screen and (max-width: 479px) {
  width: 38px;
   height: 38px;
