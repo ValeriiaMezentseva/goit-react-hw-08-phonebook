@@ -3,7 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 
 export const CloseIcon = styled(AiOutlineClose)`
     text-align: center;
-    color: white; 
+    color: #02bfae; 
     :hover {
   color: red;
   }
@@ -43,7 +43,25 @@ transform: translate(-50%, -50%) scale(1);
 `; 
 
 export const CloseButton = styled.button`
-display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: 10px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: 500;
+  background: transparent; 
+  border: none; 
+  box-sizing: border-box;
+ border-radius: 4px;
+ @media screen and (max-width: 479px) {
+ width: 38px;
+  height: 38px;
+    }
+/* display: block;
 position: absolute; 
 left: 91%; 
 bottom: 88%; 
@@ -60,6 +78,6 @@ box-shadow: rgba(46, 191, 240, 0.4) 2px 2px;
    left: 86%; 
 bottom: 89%;
 font-size: 20px;
-    }
+    } */
 
 `
