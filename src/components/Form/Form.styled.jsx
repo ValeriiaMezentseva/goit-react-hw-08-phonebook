@@ -6,7 +6,7 @@ export const FormWrapper = styled.div`
 display: flex;
 flex-direction: row;
 text-align: center;
-padding: 12px;
+/* padding: 12px; */
 margin: 0;
 background: #fff;
 border-radius: 8px;
@@ -28,6 +28,9 @@ border-radius: 15px;
   }
   @media screen and (min-width: 480px) {
     width: 480px;
+  }
+    @media screen and (min-width: 768px) {
+    width: 560px;
   }
 `;
 

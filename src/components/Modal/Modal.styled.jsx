@@ -3,9 +3,10 @@ import { AiOutlineClose } from 'react-icons/ai';
 
 export const CloseIcon = styled(AiOutlineClose)`
     text-align: center;
-    color: #02bfae; 
+    fill: #02bfae; 
+     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
     :hover {
-  color: red;
+  fill: red;
   }
 `
 
