@@ -3,10 +3,10 @@ import { Field, ErrorMessage, Form } from 'formik';
 
 
 export const FormWrapper = styled.div`
-display: flex;
-flex-direction: row;
+/* display: flex;
+flex-direction: row; */
 text-align: center;
-/* padding: 12px; */
+padding: 12px;
 margin: 0;
 background: #fff;
 border-radius: 8px;
@@ -16,14 +16,14 @@ box-shadow: 0 2px 0 0 #ebeffb;
 export const FormStyled = styled(Form)`
 display: flex;
 flex-direction: column;
-gap: 24px;
-padding: 20px;
+gap: 20px;
+/* padding: 20px; */
 margin: 0 auto;
 width: 99%;
 background-color: #fefefe;
 box-shadow: 0px 8px 12px -4px rgba(50, 88, 130, 0.32);
 border-radius: 15px;
-    @media screen and (min-width: 320px) {
+    /* @media screen and (min-width: 320px) {
     width: 320px;
   }
   @media screen and (min-width: 480px) {
@@ -31,13 +31,14 @@ border-radius: 15px;
   }
     @media screen and (min-width: 768px) {
     width: 560px;
-  }
+  } */
 `;
 
 export const FormBox = styled.div`
  display: flex; 
  flex-direction: column;
  margin-left: 10px;
+ margin-top: 18px;
  text-align: start;
  @media screen and (max-width: 768px) {
    align-items: center;
@@ -50,8 +51,12 @@ export const Label = styled.label`
  flex-direction: column;
  width: 100%;
  font-weight: 500;
+      @media screen and (min-width: 768px) {
+      font-size: 22px;
+  }
  :not(:last-child) {
     margin-bottom: 20px;
+
   }
 `;
 export const Input = styled(Field)`
@@ -62,6 +67,9 @@ margin-right: 10px;
 border: 2px solid #ccc;
 border-radius: 5px;
 outline: none;
+@media screen and (min-width: 768px) {
+  padding: 10px 15px;
+  }
 :focus {
     border-color: #4287f5;
   }
@@ -78,7 +86,7 @@ border: 1px solid #02bfae;
 text-align: center;
 padding: 10px 20px;
 margin: 15px; 
-font-size: 17px;
+font-size: 18px;
 font-weight: 700;
 line-height: 27px;
 background: #5cc8bff9; 

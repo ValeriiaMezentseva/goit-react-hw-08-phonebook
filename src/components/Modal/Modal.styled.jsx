@@ -2,11 +2,11 @@ import styled from "@emotion/styled";
 import { AiOutlineClose } from 'react-icons/ai';
 
 export const CloseIcon = styled(AiOutlineClose)`
-    text-align: center;
-    fill: #02bfae; 
-     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    :hover {
-  fill: red;
+text-align: center;
+color: #02bfae;
+transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+:hover {
+  color: red;
   }
 `
 
@@ -56,6 +56,7 @@ export const CloseButton = styled.button`
   font-weight: 500;
   background: transparent; 
   border: none; 
+  color: #5cc8bff9; 
   box-sizing: border-box;
  border-radius: 4px;
  @media screen and (max-width: 479px) {

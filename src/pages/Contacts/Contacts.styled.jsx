@@ -20,11 +20,14 @@ export const ContactsContainer = styled.div`
   padding-right: 20px; */
   margin-left: auto;
   margin-right: auto;
+      @media screen and (min-width: 220px) {
+    width: 220px;
+  }
     @media screen and (min-width: 320px) {
-    width: 320px;
+    width: 340px;
   }
   @media screen and (min-width: 480px) {
-    width: 480px;
+    width: 500px;
   }
   @media screen and (min-width: 768px) {
     width: 768px;
