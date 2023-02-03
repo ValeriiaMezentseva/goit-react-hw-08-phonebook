@@ -34,7 +34,7 @@ const RegisterForm = () => {
                 </Label>
                 <Label>
                     Password
-                    <Input type="password" name="password" placeholder='Create a password' required/>
+                    <Input type="password" name="password" placeholder='Create a password' autocomplete="off"  required/>
           </Label>
           <Input type="checkbox" required />
               <CheckboxLabel>
