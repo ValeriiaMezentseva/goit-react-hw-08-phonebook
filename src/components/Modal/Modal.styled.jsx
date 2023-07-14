@@ -5,7 +5,7 @@ export const CloseIcon = styled(IoMdClose)`
 display: block;
 text-align: center;
 color: ${props => props.theme.colors.normalDark};
-transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 :hover {
   color: red;
   }
