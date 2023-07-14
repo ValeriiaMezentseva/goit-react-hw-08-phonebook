@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/'; 
+axios.defaults.baseURL = 'https://phonebook-backend-idmx.onrender.com/api/'; 
 
 
 export const fetchContacts = createAsyncThunk(
@@ -18,10 +18,10 @@ export const fetchContacts = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
   "contacts/addContact",
-    async ({name, number}, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
-        const response = await axios.post("/contacts", {name, number});
-        return response.data;
+      const response = await axios.post("/contacts", credentials);
+      return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -38,14 +38,26 @@ export const deleteContact = createAsyncThunk(
       return thunkAPI.rejectWithValue(e.message);
     }
   }
-);
+); 
 
 export const editContact = createAsyncThunk(
   'contacts/editContact',
-  async ({id, contact}, thunkAPI) => {
+  async ({ _id, contact }, thunkAPI) => {
     try {
-      const response = await axios.patch(`/contacts/${id}`, contact);
+      const response = await axios.put(`/contacts/${_id}`, contact);
       return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const addToFavorite = createAsyncThunk(
+  "contacts/favorite",
+  async ({ contactId, favorite }, thunkAPI) => {
+    try {
+      const response = await axios.patch(`/contacts/${contactId}/favorite`, { favorite });
+      return response.data.data.updatedContact;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

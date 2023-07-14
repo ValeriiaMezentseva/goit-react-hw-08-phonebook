@@ -1,21 +1,23 @@
 import { Formik } from "formik";
 import * as yup from 'yup'; 
-// import { nanoid } from "nanoid";
 import { Notify } from "notiflix";
 import { useDispatch, useSelector } from "react-redux";
+
 import { setModal } from "redux/phonebook/sliceModal";
 import { editContact } from "redux/phonebook/operations";
 import { selectContacts, selectId } from "redux/phonebook/selectors";
-import { FormStyled, FormBox, Label, Input, Button, Error} from "./EditModal.styled";
+
+import { FormStyled, Title, FormBox, Label, Input, Button, Error} from "./EditModal.styled";
 
 
 const namePattern = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
-
+const emailRegExp = /^\w+([.-]?\w+){2}@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 const numberPattern = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
 
 const schema = yup.object().shape({
     name: yup.string().matches(namePattern, "Name is not valid").required(),
-    number: yup.string().min(6).max(24).matches(numberPattern, 'Phone number is not valid').required(),
+    email: yup.string().matches(emailRegExp, 'Your email must be valid').lowercase().required(),
+    phone: yup.string().min(6).max(24).matches(numberPattern, 'Phone number is not valid').required(),
 });
 
 
@@ -25,28 +27,24 @@ const EditModal = () => {
     const contactId = useSelector(selectId);
 
     const dispatch = useDispatch();
-    const contactData = contacts.find(({ id }) => id === contactId);
-    const { id, name, number } = contactData;
+    const contactData = contacts.find(({ _id }) => _id === contactId);
+    const { _id, name, email, phone } = contactData;
     
     const initialValues = {
         name: name,
-        number: number,
+        email: email,
+        phone: phone,
     };
 
     const handleSubmit = values => {
-        const isIncluded = contacts.some(contact => contact.name.toLowerCase() === values.name.toLowerCase());
-        if (isIncluded) {
-            Notify.failure(`${values.name} is already in your contacts`)
-            return;
-        }
 
         try {
-            dispatch(editContact({ id, contact: values }));
-             dispatch(setModal());
-             Notify.success(`Contact was successfully edited`);
+            dispatch(editContact({ _id, contact: values }));
+            dispatch(setModal());
+            Notify.success(`Contact was successfully edited`);
         }
         catch (error) {
-             Notify.error(`Something went wrong`);
+            Notify.error(`Something went wrong`);
         }
     };
 
@@ -57,32 +55,43 @@ const EditModal = () => {
             onSubmit={handleSubmit}
         >
             <FormStyled autoComplete='off'>
+                <Title> Make changes 👇 </Title>
                 <FormBox>
-                        <Label htmlFor='name'>
-                            Name
-                            <Input
-                                id='name'
-                                type='text'
-                                name='name'
-                                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                            />
-                            <Error name='name' component='div' />
-                        </Label>
-                        <Label htmlFor='number'>
-                            Number
-                            <Input
-                                id='number'
-                                type='tel'
-                                name='number'
-                                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                            />
-                            <Error name='number' component='div' />
-                        </Label>
-                    </FormBox>
-                    <Button type="submit">Save changes</Button>
-                </FormStyled>
+                    <Label htmlFor='name'>
+                        Name
+                        <Input
+                            id='name'
+                            type='text'
+                            name='name'
+                            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                        />
+                        <Error name='name' component='div' />
+                    </Label>
+                    <Label htmlFor='email'>
+                        Email
+                        <Input
+                            id='email'
+                            type='text'
+                            name='email'
+                            title="Please enter a valid email address"
+                        />
+                        <Error name='email' component='div' />
+                    </Label>
+                    <Label htmlFor='phone'>
+                        Number
+                        <Input
+                            id='phone'
+                            type='tel'
+                            name='phone'
+                            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                        />
+                        <Error name='phone' component='div' />
+                    </Label>
+                </FormBox>
+                <Button type="submit">Save changes</Button>
+            </FormStyled>
         </Formik>
     );
-};
+}; 
 
 export default EditModal;

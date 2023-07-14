@@ -1,28 +1,26 @@
-import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/phonebook/operations';
-import { setModal } from 'redux/phonebook/sliceModal';
-import Modal from 'components/Modal';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
-import { LoaderSpinner } from 'components/Loader/Loader';
-import { selectOperation, selectModal, selectFilteredContacts } from 'redux/phonebook/selectors';
-import { ItemUser, UserIcon, ContactList, ContactsButton, ContactLabel, DeleteIcon, PhoneIcon, EditIcon, ContactWrapper, ButtonWrapper, EmptyText } from './Contacts.styled';
+
+import { deleteContact, addToFavorite } from 'redux/phonebook/operations';
+import { selectModal, selectFilteredContacts } from 'redux/phonebook/selectors';
+import { setModal } from 'redux/phonebook/sliceModal';
+
+import Modal from 'components/Modal';
+import ContactItem from 'components/ContactItem';
+
+import { ContactList, NoContactsBox, NoContactsImg, NoContactsText } from './Contacts.styled';
 
 
 const ContactsList = () => {
     const dispatch = useDispatch();
-    
-    // const contacts = useSelector(selectContacts);
-    // const filter = useSelector(selectFilter);
-    const operation = useSelector(selectOperation); 
-    const modal = useSelector(selectModal); 
+    const modal = useSelector(selectModal);
     const filtredContacts = useSelector(selectFilteredContacts);
 
     const editContact = id => {
-        dispatch(setModal(id)); 
+        dispatch(setModal(id));
     }
 
-    
     const removeContact = id => {
         try {
             dispatch(deleteContact(id));
@@ -32,46 +30,53 @@ const ContactsList = () => {
         }
     };
 
-//  const getFilteredContacts = () => {
-//     const normilizedFilter = filter.toLowerCase();
-//     return contacts.filter(contact =>
-//       contact.name.toLowerCase().includes(normilizedFilter)
-//     );
-//   };
-    // const filtredContacts = getFilteredContacts();
-    
+  const [favoriteStatus, setFavoriteStatus] = useState({});
 
+  useEffect(() => {
+    const initialFavoriteStatus = {};
+    filtredContacts.forEach((contact) => {
+      initialFavoriteStatus[contact._id] =
+        localStorage.getItem(`favorite_${contact._id}`) === 'true';
+    });
+    setFavoriteStatus(initialFavoriteStatus);
+  }, [filtredContacts]);
+
+  const handleHeartClick = (contactId) => {
+    const updatedFavoriteStatus = { ...favoriteStatus };
+    updatedFavoriteStatus[contactId] = !updatedFavoriteStatus[contactId];
+    setFavoriteStatus(updatedFavoriteStatus);
+    const updatedFavorite = updatedFavoriteStatus[contactId];
+    dispatch(addToFavorite({ contactId, favorite: updatedFavorite }));
+    localStorage.setItem(`favorite_${contactId}`, updatedFavorite.toString());
+  };
+    
     return (
         <>
             {filtredContacts.length > 0 ? (
                 <ContactList>
-                    {filtredContacts.map(({ id, name, number }) => (
-                        <ItemUser key={id}>
-                            <ContactWrapper>
-                                <ContactLabel>
-                                    <UserIcon />
-                                    <span>{name}</span>
-                                </ContactLabel>
-                                <ContactLabel>
-                                    <PhoneIcon />
-                                    <span>{number}</span>
-                                </ContactLabel>
-                            </ContactWrapper>
-                            <ButtonWrapper>
-                                <ContactsButton type='button' onClick={() => editContact(id)}>
-                                    <EditIcon />
-                                </ContactsButton>
-                                <ContactsButton type='button' onClick={() => removeContact(id)}>
-                                    {operation === id ? <LoaderSpinner /> : <DeleteIcon />}
-                                </ContactsButton>
-                            </ButtonWrapper>
-                        </ItemUser>
-                    ))}
+                    {filtredContacts.map(({ _id, name, email, phone }) => (
+            <ContactItem
+              key={_id}
+              _id={_id}
+              name={name}
+              email={email}
+              phone={phone}
+              favoriteStatus={favoriteStatus[_id]}
+              editContact={editContact}
+              removeContact={removeContact}
+              handleHeartClick={handleHeartClick}
+            />
+          ))}
                 </ContactList>
-            ) : (<EmptyText > There is no contacts 🤷 </EmptyText>)}
+            ) : (
+                    <NoContactsBox>
+                        <NoContactsImg />
+                        <NoContactsText>There are no contacts 🤷</NoContactsText>
+                    </NoContactsBox>
+            )}
             {modal && <Modal />}
-            </>
+        </>
     );
-};
+}; 
 
-export default ContactsList; 
+export default ContactsList;

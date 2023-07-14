@@ -1,64 +1,102 @@
 import styled from "@emotion/styled";
-import { BsPersonBadge } from 'react-icons/bs';
+import { RxAvatar } from 'react-icons/rx';
+import { FiLogOut } from 'react-icons/fi';
+
+
 
 export const Wrapper = styled.div`
 display: flex;
+flex-direction: row; 
 align-items: center;
+margin-right: 10px;
+ @media screen and (min-width: 680px) {
 gap: 12px;
- @media screen and (max-width: 680px) {
-flex-direction: column; 
-gap: 0px; 
   };
 `; 
 
-export const UserName = styled.p`
+export const UserName = styled.div`
 font-size: 20px;
 display: flex;
-margin: 0;
-color: #013370ec;
-align-items: center;
- @media screen and (max-width: 680px) {
 margin-top: 5px;
 margin-bottom: 10px; 
-margin-right: 5px;
+margin-right: 3px;
+color: ${props => props.theme.colors.primaryDarkText};
+align-items: center;
+ @media screen and (min-width: 680px) {
+margin: 0;
   };
 `; 
 
-export const Icon = styled(BsPersonBadge)`
+export const ThemeTogglerBox = styled.div`
+  position: absolute;
+  top: 90px;
+  right: 40px;
+  z-index: 1;
+  cursor: pointer;
+  
+  @media screen and (max-width: 679px) {
+    display: none; 
+  }
+`;
+
+export const Icon = styled(RxAvatar)`
 padding: 0;
 font-size: 26px;
 fill: #41bbd7;
 margin-right: 3px;
+`; 
+
+export const LogoutIcon = styled(FiLogOut)`
+  padding: 0;
+font-size: 20px;
+margin-left: 5px;
 `
 
+
 export const Button = styled.button`
-border: 1px solid #02bfae;
-text-align: center;
-margin-top: 10px;
-padding: 10px 20px;
-margin-right: 10px; 
-font-size: 17px;
-font-weight: 700;
-line-height: 27px;
-background: #41bbd7;
-border-radius: 4px;
-box-shadow: rgba(46, 191, 240, 0.4) 2px 2px;
-white-space: nowrap;
-overflow: hidden;
-color: white;
-text-overflow: ellipsis;
-transition: background-color .2s ease;
- outline: none;
- cursor: pointer;
-    margin-bottom: 10px;
-:hover {
-  box-shadow: #2c6cbb97 0 -25px 18px -14px inset,#79cfefb3 0 1px 2px;
-  transform: scale(1.05);
-}
- @media screen and (max-width: 680px) {
-margin: 0;
-margin-right: 5px;
-margin-bottom: 5px;
-padding: 6px 20px;
-  };
+display: flex; 
+align-items: center; 
+  border: none;
+  text-align: center;
+  padding: 6px 20px;
+   margin-bottom: 5px;
+  margin-right: 10px;
+  font-size: 17px;
+  line-height: 27px;
+  background: ${props => props.theme.colors.normalDark};
+  color: white; 
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+  outline: none;
+  cursor: pointer;
+  box-shadow: none;
+
+  &:hover {
+    transform: scale(1.05);
+box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
+
+  &.active {
+    outline: none;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
+
+  @media screen and (max-width: 679px) {
+   display:none; 
+  }
 `; 
+
+export const MenuBtn = styled.button`
+background: none; 
+border: none; 
+color:  ${props => props.theme.colors.primaryDarkText};
+font-size: 30px; 
+cursor: pointer;
+
+  @media screen and (min-width: 680px) {
+   display:none; 
+  }
+`;

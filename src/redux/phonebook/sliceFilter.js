@@ -5,7 +5,7 @@ const filterSlice = createSlice({
     initialState: { value: '', isOpen: false },
     reducers: {
         setFilter: (state, action) => {
-            return ( { ...state, value: action.payload } );
+            return ({ ...state, value: action.payload });
         },
         toggle: state => {
             state.isOpen = !state.isOpen;

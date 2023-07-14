@@ -15,11 +15,18 @@ import { filterReducer } from './phonebook/sliceFilter';
 import { authReducer } from './auth/sliceAuth';
 import { modalReducer } from './phonebook/sliceModal';
 import { formReducer } from './phonebook/sliceForm';
+import { themeReducer } from './theme/themeSlice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
+};
+
+const themePersistConfig = {
+  key: 'theme',
+  storage,
+  whitelist: ['darkTheme'],
 };
 
 export const store = configureStore({
@@ -28,7 +35,8 @@ export const store = configureStore({
     contacts: contactsReducer,
     filter: filterReducer,
     modal: modalReducer,
-    form: formReducer
+    form: formReducer,
+    theme: persistReducer(themePersistConfig, themeReducer),
         
   },
   middleware: getDefaultMiddleware =>

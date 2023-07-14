@@ -1,21 +1,23 @@
-import { selectFilter } from 'redux/phonebook/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { FilterWrapper, Input, Icon, InputWrapper } from './Filter.styled';
+
+import { selectFilter } from 'redux/phonebook/selectors';
 import { setFilter } from 'redux/phonebook/sliceFilter';
+
+import { FilterWrapper, Input, Icon, } from './Filter.styled';
+
 
 const Filter = () => {
     const dispatch = useDispatch();
     const filter = useSelector(selectFilter);
     const onChangeFilter = e => {
-    dispatch(setFilter(e.currentTarget.value))
-  }; 
+        dispatch(setFilter(e.currentTarget.value))
+    };
     return (
         <FilterWrapper>
-            <InputWrapper>
-                <Icon /> <Input onChange={onChangeFilter} name="filter" type="text" placeholder='Find a contact by name' value={filter}></Input>
-                </InputWrapper>
+            <Icon />
+            <Input onChange={onChangeFilter} name="filter" type="text" placeholder='Type in the name' value={filter}></Input>
         </FilterWrapper>
-    )
-};
+    );
+}; 
 
 export default Filter; 

@@ -7,7 +7,7 @@ Notify.init({
 });
 
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/'; 
+axios.defaults.baseURL = 'https://phonebook-backend-idmx.onrender.com/api/'; 
 
 
 const setAuthHeader = token => {
@@ -16,20 +16,20 @@ const setAuthHeader = token => {
 
 const clearAuthHeader = () => {
     axios.defaults.headers.common.Authorization = '';
-}; 
+};
 
 
 export const register = createAsyncThunk(
     'auth/register',
     async (credentials, thunkAPI) => {
         try {
-            const response = await axios.post('/users/signup', credentials);
-            setAuthHeader(response.data.token); 
-             Notify.success('Registered successfully');
+            const response = await axios.post('/users/register', credentials);
+            setAuthHeader(response.data.token);
+            Notify.success('Registered successfully');
             return response.data;
         }
         catch (e) {
-             Notify.failure("Something went wrong, try again");
+            Notify.failure("Something went wrong, try again");
             return thunkAPI.rejectWithValue(e.message);
         }
     }
@@ -53,13 +53,14 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk(
     'auth/logout',
     async (_, thunkAPI) => {
-  try {
-    await axios.post('/users/logout');
-    clearAuthHeader();
-  } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
-  }
-    });
+        try {
+            await axios.post('/users/logout');
+            clearAuthHeader();
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.message);
+        }
+    }
+);
 
 export const refreshUser = createAsyncThunk(
     'auth/refresh',

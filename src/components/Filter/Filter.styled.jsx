@@ -2,42 +2,42 @@ import styled from "@emotion/styled";
 import { FiSearch } from 'react-icons/fi';
 
 export const Icon = styled(FiSearch)`
-font-size: 18px; 
+position: absolute;
+top: 15px;
+left: 10px;
+font-size: 20px; 
 margin: 0;
 padding: 10px;
-color: #5cc8bf;
+color: ${props => props.theme.colors.normalDark};
 align-items: center;
-`
-
-export const FilterWrapper = styled.div`
-  text-align: start;
-background: #fff;
-border-radius: 8px;
-box-shadow: 0 2px 0 0 #ebeffb; 
 `;
 
-export const InputWrapper = styled.div`
-  display: flex;
-align-items: center;
-   @media screen and (max-width: 680px) {
-width: 320px; 
-  };
-`
+export const FilterWrapper = styled.div`
+position: relative;
+text-align: start;
+background: transparent;
+`;
+
 
 export const Input = styled.input`
+width: 320px;
+height: 45px;
 font-size: 20px;
-padding: 5px 10px;
-margin-bottom: 10px;
+padding-left: 37px;
 margin-top: 10px;
-margin-right: 10px;
-border: 2px solid #ccc;
-border-radius: 5px;
+margin-left: 10px;
+color: ${props => props.theme.colors.primaryDarkText}; 
+box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+background: transparent; 
+border: 1px solid #ccc;
+border-radius: 8px;
 outline: none;
-width: 320px; 
 :focus {
-    border-color: #4287f5;
+    border-color: ${props => props.theme.colors.orangeAccent};
   }
-   @media screen and (max-width: 680px) {
-width: 100%; 
-  };
+
+    @media screen and (max-width: 400px) {
+  width: 90%;
+  font-size: 18px;
+  }
 `;

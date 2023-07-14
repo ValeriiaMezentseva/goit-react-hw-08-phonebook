@@ -13,6 +13,10 @@ export const selectOpenForm = state => state.form.isOpen;
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter],
   (contacts, filter) => {
+    if (!Array.isArray(contacts)) {
+      return [];
+    }
+    
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(filter.toLowerCase())
     );
