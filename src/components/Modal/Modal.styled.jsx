@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { AiOutlineClose } from 'react-icons/ai';
+import { IoMdClose} from 'react-icons/io';
 
-export const CloseIcon = styled(AiOutlineClose)`
+export const CloseIcon = styled(IoMdClose)`
 display: block;
 text-align: center;
 color: ${props => props.theme.colors.normalDark};

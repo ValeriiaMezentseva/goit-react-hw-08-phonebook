@@ -1,21 +1,19 @@
 import styled from "@emotion/styled";
 
 export const FooterBox = styled.footer`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  color: ${props => props.theme.colors.primaryDarkText};;
+display: flex; 
+align-items: center;
+justify-content: center;
+  color: ${props => props.theme.colors.primaryDarkText};
   
-`; 
+`;
 
 export const FooterText = styled.div`
-  position: relative;
-  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-   height: 30px;
-   padding: 10px 10px; 
+  height: 30px;
+  padding: 10px;
   background-color: ${props => props.theme.colors.backgroundColor};
 
   span {
@@ -25,7 +23,6 @@ export const FooterText = styled.div`
     line-height: 14px;
     letter-spacing: -0.01em;
     text-align: left;
-    margin-right: 5px; 
-    
+    margin-right: 5px;
   }
-`; 
+`;
