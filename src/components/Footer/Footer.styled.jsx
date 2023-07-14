@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const FooterBox = styled.footer`
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   color: ${props => props.theme.colors.primaryDarkText};;

@@ -18,8 +18,7 @@ export const UserName = styled.div`
 font-size: 20px;
 display: flex;
 margin-top: 5px;
-margin-bottom: 10px; 
-margin-right: 3px;
+margin-bottom: 15px; 
 color: ${props => props.theme.colors.primaryDarkText};
 align-items: center;
  @media screen and (min-width: 680px) {
