@@ -7,7 +7,8 @@ export const FooterBox = styled.footer`
   right: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
+  margin-top: 20px;
   color: ${props => props.theme.colors.primaryDarkText};
 `;
 
