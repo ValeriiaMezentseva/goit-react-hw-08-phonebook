@@ -6,17 +6,17 @@ export const CloseIcon = styled(IoMdClose)`
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   right: 18px;
   top: 18px;
   font-weight: 600;
   border: none; 
   cursor: pointer;
-text-align: center;
-color: ${props => props.theme.colors.normalDark};
-transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-:hover {
+  text-align: center;
+  color: ${props => props.theme.colors.normalDark};
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  :hover {
   color: red;
   }
 `;
