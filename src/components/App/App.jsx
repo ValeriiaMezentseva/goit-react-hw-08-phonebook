@@ -11,6 +11,7 @@ import { PrivateRoute } from "components/PrivateRoute";
 import SharedLayout from "components/SharedLayout";
 
 import { refreshUser } from "redux/auth/operationsAuth";
+import { fetchContacts } from "redux/phonebook/operations";
 import { useAuth } from "hooks/useAuth";
 
 const HomePage = lazy(() => import('../../pages/Home/Home'));
@@ -28,7 +29,11 @@ export const App = () => {
   
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(fetchContacts());
+    }
+   
+  }, [dispatch, isLoggedIn]);
     
   return isRefreshing ? (
     <b>Refreshing user...</b>
