@@ -11,7 +11,6 @@ export const CloseIcon = styled(IoMdClose)`
   right: 18px;
   top: 18px;
   font-weight: 600;
-  background: transparent; 
   border: none; 
   cursor: pointer;
 text-align: center;
@@ -46,18 +45,18 @@ transform: translate(-50%, -50%) scale(1);
 }
 `; 
 
-export const CloseButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 44px;
-  height: 44px;
-  right: 18px;
-  top: 18px;
-  font-size: 28px;
-  font-weight: 600;
-  background: transparent; 
-  border: none; 
-  cursor: pointer;
-`;
+// export const CloseButton = styled.button`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: absolute;
+//   width: 44px;
+//   height: 44px;
+//   right: 18px;
+//   top: 18px;
+//   font-size: 28px;
+//   font-weight: 600;
+//   background: transparent; 
+//   border: none; 
+//   cursor: pointer;
+// `;

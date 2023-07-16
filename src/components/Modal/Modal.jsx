@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from 'redux/phonebook/sliceModal';
 import EditModal from 'components/EditModal';
 
-import { Backdrop, ModalContainer, CloseButton, CloseIcon } from './Modal.styled';
+import { Backdrop, ModalContainer, CloseIcon } from './Modal.styled';
 
 
 const Modal = () => {
