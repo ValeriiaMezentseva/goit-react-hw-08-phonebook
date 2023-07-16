@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Suspense} from "react";
 
-
 import { Loader } from "components/Loader/Loader";
 import AppBar from "components/AppBar";
 import Footer from "components/Footer";

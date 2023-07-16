@@ -17,7 +17,7 @@ const Modal = () => {
     return createPortal(
         <Backdrop>
             <ModalContainer>
-                <CloseButton type="button" onClick={onBtnClick}><CloseIcon/></CloseButton>
+                <CloseIcon onClick={onBtnClick}/>
                 <EditModal />
             </ModalContainer>
         </Backdrop>,
