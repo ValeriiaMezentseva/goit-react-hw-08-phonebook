@@ -23,6 +23,7 @@ width: 100%;
 margin: 0 auto;
 background-color: transparent;
 border-radius: 15px;
+margin-bottom: 40px;
 `; 
 
 export const BtnWrapper = styled.div`
